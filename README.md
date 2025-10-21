@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+### AWS Hands-on Tutorial
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AI RECIPE GENERATOR
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In this tutorial, you will learn how to use AWS Amplify to build a serverless web application powered by Generative AI using Amazon Bedrock and the Claude 3 Sonnet foundation model. Users can enter a list of ingredients, and the application will generate delicious recipes based on the input ingredients. The application includes an HTML-based user interface for ingredient submission and a backend web app to request AI-generated recipes.
 
-## React Compiler
+## What you will accomplish
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+In this tutorial, you will:
 
-## Expanding the ESLint configuration
+* Configure AWS Amplify to host your frontend application with continuous deployment built in
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Configure Amplify Auth and enable Amazon Bedrock foundation model Access
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Build an app backend for handling requests for your web application
+
+
+* Use Amplify Data to call the serverless backend
+
+
+* Connect the app to the backend
+
+## Application Architecture
+
+The following diagram provides a visual representation of the services used in this tutorial and how they are connected. This application uses AWS Amplify, a GraphQL API built with AWS AppSync, AWS Lambda, and Amazon Bedrock.
+
+As you go through the tutorial, you will learn about the services in detail and find resources that will help you get up to speed with them.
+
+
+![img.png](architecture.png)
+
+Link to tutorial: [Build a Serverless Web Application using Generative AI](https://docs.aws.amazon.com/hands-on/latest/build-serverless-web-app-lambda-amplify-bedrock-cognito-gen-ai/build-serverless-web-app-lambda-amplify-bedrock-cognito-gen-ai.html?ref=gsrchandson)
+
+## Tasks
+This tutorial is divided into the following tasks. You must complete each task before moving to the next one.
+
+* Task 1: Host a Static Website (5 minutes): Configure AWS Amplify to host your frontend application with continuous deployment built in
+
+* Task 2: Manage Users (5 minutes): Configure Amplify Auth and enable Amazon Bedrock foundation model Access
+
+* Task 3: Build a Serverless Backend (10 minutes): Build an app backend for handling requests for your web application
+
+* Task 4: Deploy the Backend API (5 minutes): Use Amplify Data to call the serverless backend
+
+* Task 5: Build the Frontend (5 minutes): Connect the app to the backend
+
+* Task 6: Clean up Resources (2 minutes): Clean up the resources used in this tutorial
+
+
+## Deploy
+
+This project uses Amplify Gen 2. After amplify init, run:
+```bash
+amplify sandbox   # or amplify push for permanent env
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Quickstart
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
+
+```bash
+VITE v7.1.9  ready in 3205 ms
+➜  Local:   http://localhost:5174/
+➜  Network: use --host to expose
+➜  press h + enter to show help
+```
+
+Go to localhost, sign up or sign in with Cognito, then enter ingredients (separated with a coma) to generate a recipe.
